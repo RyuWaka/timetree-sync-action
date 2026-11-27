@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import ClassVar
 from zoneinfo import ZoneInfo
 
@@ -54,7 +54,7 @@ class Event:
                 "date": self.start.strftime("%Y-%m-%d"),
             }
             event["end"] = {
-                "date": self.end.strftime("%Y-%m-%d"),
+                "date": (self.end + timedelta(days=1)).strftime("%Y-%m-%d"),
             }
         else:
             event["start"] = {
